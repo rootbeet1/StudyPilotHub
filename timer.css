@@ -2,7 +2,18 @@
     width:35vmin;
     height:35vmin; 
     border-radius:50%;
-    background:conic-gradient(#43423f 3%, 0, white ) border-box;
+    background:conic-gradient(#43423f 100%, 0, white ) border-box;
     margin: auto;
     margin-top: 10%;
     }
+h1{
+    font-style:italic;
+    font-size: medium;
+    margin-top: 0%;
+    text-align: center;
+}
+
+#countdown {
+    text-align: center;
+    margin: 10%;
+}
