@@ -1,8 +1,8 @@
-.timercircle {
-    width: 30vmin;
-    height:30vmin; 
-    border:1vh  solid green;
+.timer {
+    width:35vmin;
+    height:35vmin; 
     border-radius:50%;
-    margin:auto;
-
-}
+    background:conic-gradient(#43423f 3%, 0, white ) border-box;
+    margin: auto;
+    margin-top: 10%;
+    }
