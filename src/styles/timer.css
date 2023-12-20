@@ -1,38 +1,70 @@
 h1{
-    margin-top: 5px;
+    margin-top: 30px;
     font-size: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 60px;
     text-align: center;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
-
 .timer {
-    width:35vmin;
-    height:35vmin; 
-    border-radius:50%;
-    background:conic-gradient(#43423f 100%, 0, white ) border-box;
-    margin: 0 auto 100px;
-    }
+    height: 235px; 
+    width: 235px;
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    position: relative; /* Für die Positionierung des Rahmens */
+
+    /* Hintergrund mit conic-gradient */
+    background: conic-gradient(#43423f 100%, 0, white);
+
+    /* Rahmen-Stil */
+    box-sizing: border-box; /* Der Rahmen wird innerhalb der Höhe und Breite berücksichtigt */
+    border: 5px solid #000; /* Rahmenstil und Breite anpassen */
+    box-shadow: inset 0 0 0 5px #fff; /* Inset Shadow für Überlappungseffekt */
+}
 
 #countdown {
-    
+    margin-top: 30px;
+    font-size: 50px;
+    margin-bottom: 60px;
     text-align: center;
-        font-size: 45px;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        padding: 15px 40px;
-        color: #ffffff;
-        background-color: #30a05f;
-        border: 2px solid #ffffff;
-        border-radius: 50px;
-        letter-spacing: 2px;
-        cursor: pointer;
-        width: 190px;
-        height:50px;
-        margin: 0 auto;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-    
-#countdown:hover {
-        background-color: #ffffff;
-        color: #30a05f;
-    }
-    
+
+
+.start-reset-button{
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 15px 40px;
+    color: #ffffff;
+    background-color: #30a05f;
+    border: 2px solid #ffffff;
+    border-radius: 50px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    width: 200px;
+    height:30px;
+    margin: 0 auto;
+}
+.stop-button{
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 15px 40px;
+    color: #ffffff;
+    background-color: #a04130;
+    border: 2px solid #ffffff;
+    border-radius: 50px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    width: 100px;
+    height:30px;
+    margin: 0 auto;
+}
+.stop-button:hover{
+    background-color: #ffffff;
+    color: #a04130;
+}
+.start-reset-button:hover{
+    background-color: #ffffff;
+    color: #30a05f;
+}
