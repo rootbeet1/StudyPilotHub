@@ -10,15 +10,11 @@ h1{
     width: 235px;
     border-radius: 50%;
     margin: 0 auto 30px;
-    position: relative; /* Für die Positionierung des Rahmens */
-
-    /* Hintergrund mit conic-gradient */
+    position: relative; 
     background: conic-gradient(#43423f 100%, 0, white);
-
-    /* Rahmen-Stil */
-    box-sizing: border-box; /* Der Rahmen wird innerhalb der Höhe und Breite berücksichtigt */
-    border: 5px solid #000; /* Rahmenstil und Breite anpassen */
-    box-shadow: inset 0 0 0 5px #fff; /* Inset Shadow für Überlappungseffekt */
+    box-sizing: border-box; 
+    border: 5px solid #000; 
+    box-shadow: inset 0 0 0 5px #fff;
 }
 
 #countdown {
