@@ -1,39 +1,121 @@
-const value= window.location.href.slice(-2);
-const seconds =(value*60)/100;
-const timer = document.querySelector(".timer");
-const h1=document.querySelector("h1");
-let gradientSize = 101; 
-const interval = seconds*1000; 
+// URL-Parameter auslesen
+const params = new URLSearchParams(window.location.search);
+const value = params.get("value"); 
 
-function decreaseGradientSize() {
-    gradientSize -= 1;
-    timer.style.background = `conic-gradient(#43423f ${gradientSize}%,0,white)`;
-    console.log(seconds*(100-gradientSize))
-    if (gradientSize <= 0) {
-        clearInterval(timerInterval); 
-    }
+// Arbeits- und Pausenzeiten extrahieren
+const workValue = parseInt(value.slice(0, 2), 10); 
+const pauseValue = parseInt(value.slice(2, 4), 10); 
+
+console.log("Arbeitszeit:", workValue, "Minuten");
+console.log("Pausenzeit:", pauseValue, "Minuten");
+
+const totalWorkDuration = workValue * 60; // Arbeitszeit in Sekunden
+const totalPauseDuration = pauseValue * 60; // Pausenzeit in Sekunden
+
+const timerElement = document.querySelector(".timer");
+const countdownElement = document.getElementById("countdown");
+const toggleButton = document.getElementById("start-stop-button"); // Ein Button für Start/Stop
+const resetButton = document.getElementById("reset-button"); // Separater Reset-Button
+const alarmSound = new Audio("../../public/sounds/bell.mp3");
+let totalSeconds = totalWorkDuration;
+let gradientSize = 101;
+let isRunning = false; // Status des Countdowns
+let isWorkPhase = true; // Arbeits- oder Pausenphase
+let timerInterval = null;
+let countdownInterval = null;
+
+// Countdown-Display aktualisieren
+function updateCountdownDisplay() {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    countdownElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
-function startCountdown(minutes) {
-    const countdownElement = document.getElementById('countdown');
 
-    let totalSeconds = minutes * 60;
-    let intervalId = setInterval(() => {
-        let minutes = Math.floor(totalSeconds / 60);
-        let seconds = totalSeconds % 60;
+// Hintergrund-Animation anpassen
+function updateGradient() {
+    gradientSize = (totalSeconds / (isWorkPhase ? totalWorkDuration : totalPauseDuration)) * 100;
+    const color = isWorkPhase ? "#43423f" : "#30a05f"; // Schwarz für Arbeit, Grün für Pause
+    timerElement.style.background = `conic-gradient(${color} ${gradientSize}%, 0, white)`;
+}
 
-        let displayMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-        let displaySeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+// Status in der Überschrift ändern
+function updateStatus() {
+    const h1Element = document.querySelector("h1"); // <h1> aus der HTML-Datei
+    h1Element.textContent = isWorkPhase ? "FOCUS" : "PAUSE"; // Phase-basierter Text
+}
 
-        countdownElement.textContent = `${displayMinutes}:${displaySeconds}`;
+// Countdown starten
+function startCountdown() {
+    isRunning = true;
+    updateStatus();
+    toggleButton.textContent = "STOP"; // Button-Text ändern
 
+    countdownInterval = setInterval(() => {
         if (totalSeconds <= 0) {
-            clearInterval(intervalId);
-            countdownElement.textContent = '00:00'; 
-        } else {
-            totalSeconds--;
+            clearInterval(countdownInterval);
+            clearInterval(timerInterval);
+            playAlarmSound();
+            // Wechsel zwischen Arbeits- und Pausenphase
+            if (isWorkPhase) {
+                isWorkPhase = false;
+                totalSeconds = totalPauseDuration;
+                gradientSize = 101;
+                startCountdown(); // Pause starten
+            } else {
+                resetCountdown(); // Gesamten Countdown zurücksetzen
+            }
+            playAlarmSound();
+            updateStatus();
+            return;
         }
+        totalSeconds--;
+        updateCountdownDisplay();
+        updateGradient();
     }, 1000);
+
+    timerInterval = setInterval(updateGradient, 100); // Hintergrund-Animation
 }
 
-startCountdown(value);
-const timerInterval = setInterval(decreaseGradientSize, interval);
+// Countdown stoppen
+function stopCountdown() {
+    isRunning = false;
+    toggleButton.textContent = "START"; // Button-Text ändern
+    clearInterval(countdownInterval);
+    clearInterval(timerInterval);
+}
+
+// Countdown zurücksetzen
+function resetCountdown() {
+    stopCountdown();
+    isWorkPhase = true;
+    totalSeconds = totalWorkDuration;
+    gradientSize = 101;
+    updateCountdownDisplay();
+    updateGradient();
+    updateStatus();
+    toggleButton.textContent = "START"; // Button zurücksetzen
+}
+
+// Ton abspielen
+function playAlarmSound() {
+    alarmSound.play()
+}
+
+
+// Event-Listener für Start/Stop-Button
+toggleButton.addEventListener("click", () => {
+    if (isRunning) {
+        stopCountdown();
+    } else {
+        startCountdown();
+    }
+});
+
+// Event-Listener für Reset-Button
+resetButton.addEventListener("click", resetCountdown);
+
+
+// Initiales Update des Displays und Status
+updateCountdownDisplay();
+updateGradient();
+updateStatus();

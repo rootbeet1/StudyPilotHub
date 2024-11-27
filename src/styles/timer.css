@@ -26,7 +26,7 @@ h1{
 }
 
 
-.start-reset-button{
+#start-stop-button{
     text-align: center;
     font-size: 25px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -37,11 +37,11 @@ h1{
     border-radius: 50px;
     letter-spacing: 2px;
     cursor: pointer;
-    width: 200px;
+    width: 100px;
     height:30px;
     margin: 0 auto;
 }
-.stop-button{
+#reset-button{
     text-align: center;
     font-size: 25px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -56,11 +56,11 @@ h1{
     height:30px;
     margin: 0 auto;
 }
-.stop-button:hover{
+#stop-button:hover{
     background-color: #ffffff;
     color: #a04130;
 }
-.start-reset-button:hover{
+#start-reset-button:hover{
     background-color: #ffffff;
     color: #30a05f;
 }
