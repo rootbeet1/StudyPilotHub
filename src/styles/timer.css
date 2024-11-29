@@ -1,20 +1,54 @@
-h1{
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --timer-border-color: #000000;
+    --timer-box-shadow-color: #ffffff;
+    --button-background-color: #30a05f;
+    --button-text-color: #ffffff;
+    --button-hover-background: #ffffff;
+    --button-hover-text: #30a05f;
+    --reset-button-background: #a04130;
+    --reset-button-hover-text: #a04130;
+    --dark-mode-button: #000000;
+}
+
+.dark-mode {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --timer-border-color: #ffffff;
+    --timer-box-shadow-color: #121212;
+    --button-background-color: #1f8642;
+    --button-text-color: #000000;
+    --button-hover-background: #000000;
+    --button-hover-text: #1f8642;
+    --reset-button-background: #7f2b1e;
+    --reset-button-hover-text: #7f2b1e;
+    --dark-mode-button: #ffffff;
+}
+
+body {
+    background-color: var(--background-color, #ffffff);
+    color: var(--text-color, #000000);
+}
+
+h1 {
     margin-top: 30px;
     font-size: 50px;
     margin-bottom: 60px;
     text-align: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 .timer {
     height: 235px; 
     width: 235px;
     border-radius: 50%;
     margin: 0 auto 30px;
     position: relative; 
-    background: conic-gradient(#43423f 100%, 0, white);
+    background: conic-gradient(#43423f 100%, white);
     box-sizing: border-box; 
-    border: 5px solid #000; 
-    box-shadow: inset 0 0 0 5px #fff;
+    border: 5px solid var(--timer-border-color, #000); 
+    box-shadow: inset 0 0 0 5px var(--timer-box-shadow-color, #fff);
 }
 
 #countdown {
@@ -22,45 +56,53 @@ h1{
     font-size: 50px;
     margin-bottom: 60px;
     text-align: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-
-#start-stop-button{
-    text-align: center;
+#start-stop-button {
     font-size: 25px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 15px 40px;
-    color: #ffffff;
-    background-color: #30a05f;
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--button-background-color, #30a05f);
     border: 2px solid #ffffff;
     border-radius: 50px;
     letter-spacing: 2px;
     cursor: pointer;
     width: 100px;
-    height:30px;
+    height: 30px;
     margin: 0 auto;
-}
-#reset-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+}
+
+#start-stop-button:hover {
+    background-color: var(--button-hover-background, #ffffff);
+    color: var(--button-hover-text, #30a05f);
+}
+
+#reset-button {
     font-size: 25px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 15px 40px;
-    color: #ffffff;
-    background-color: #a04130;
+    color: var(--button-text-color, #ffffff);
+    background-color: var(--reset-button-background, #a04130);
     border: 2px solid #ffffff;
     border-radius: 50px;
     letter-spacing: 2px;
     cursor: pointer;
     width: 100px;
-    height:30px;
+    height: 30px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
-#stop-button:hover{
-    background-color: #ffffff;
-    color: #a04130;
-}
-#start-reset-button:hover{
-    background-color: #ffffff;
-    color: #30a05f;
+
+#reset-button:hover {
+    background-color: var(--button-hover-background, #ffffff);
+    color: var(--reset-button-hover-text, #a04130);
 }
