@@ -6,12 +6,9 @@ const value = params.get("value");
 const workValue = parseInt(value.slice(0, 2), 10); 
 const pauseValue = parseInt(value.slice(2, 4), 10); 
 
-console.log("Arbeitszeit:", workValue, "Minuten");
-console.log("Pausenzeit:", pauseValue, "Minuten");
-
 const totalWorkDuration = workValue * 60; // Arbeitszeit in Sekunden
 const totalPauseDuration = pauseValue * 60; // Pausenzeit in Sekunden
-
+const darkModeButton = document.getElementById("dark-mode-button");
 const timerElement = document.querySelector(".timer");
 const countdownElement = document.getElementById("countdown");
 const toggleButton = document.getElementById("start-stop-button"); // Ein Button für Start/Stop
@@ -23,6 +20,29 @@ let isRunning = false; // Status des Countdowns
 let isWorkPhase = true; // Arbeits- oder Pausenphase
 let timerInterval = null;
 let countdownInterval = null;
+
+// Dark Mode ein- und ausschalten
+darkModeButton.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    // Zustand im Local Storage speichern
+    const isDarkMode = document.body.classList.contains("dark-mode");
+    localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
+
+    // Button-Text ändern
+    darkModeButton.textContent = isDarkMode ? "Light" : "Dark";
+});
+
+// Zustand aus Local Storage laden
+window.addEventListener("DOMContentLoaded", () => {
+    const savedDarkMode = localStorage.getItem("darkMode");
+    if (savedDarkMode === "enabled") {
+        document.body.classList.add("dark-mode");
+        darkModeButton.textContent = "Light";
+    } else {
+        darkModeButton.textContent = "Dark";
+    }
+});
 
 // Countdown-Display aktualisieren
 function updateCountdownDisplay() {
