@@ -68,6 +68,7 @@ function updateStatus() {
 function startCountdown() {
     isRunning = true;
     updateStatus();
+    playAlarmSound();
     toggleButton.textContent = "STOP"; // Button-Text ändern
 
     countdownInterval = setInterval(() => {
