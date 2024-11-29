@@ -35,7 +35,7 @@ function updateCountdownDisplay() {
 function updateGradient() {
     gradientSize = (totalSeconds / (isWorkPhase ? totalWorkDuration : totalPauseDuration)) * 100;
     const color = isWorkPhase ? "#43423f" : "#30a05f"; // Schwarz für Arbeit, Grün für Pause
-    timerElement.style.background = `conic-gradient(${color} ${gradientSize}%, 0, white)`;
+    timerElement.style.background = `conic-gradient(white ${100-gradientSize}%, ${color} ${100-gradientSize}%)`;
 }
 
 // Status in der Überschrift ändern
