@@ -1,27 +1,117 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --dark-mode-button: #434343;
+    --dark-mode-button-text: #ffffff;
+}
+
+.dark-mode {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --dark-mode-button: #ffffff;
+    --dark-mode-button-text: #000000;
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; 
     height: 100vh; 
     margin: 0;
+    color: var(--text-color, #000000);
+    background-color: var(--background-color, white);
+    position: relative; 
 }
 
-button {
-    color: #ffffff;
-    background-color: #43423f;
-    font-size: 40px;
-    border: 0px solid #ffffff;
-    border-radius: 9px;
-    padding: 10px 40px;
-    letter-spacing: 3px;
+h1 {
+    margin-top: 30px; 
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#dark-mode-button {
+    position: absolute;
+    top: 10px; 
+    left: 10px; 
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    background-color: var(--dark-mode-button, #434343);
+    color: var(--dark-mode-button-text, white);
+    border: 2px solid var(--text-color, #ffffff);
+    border-radius: 50px;
     cursor: pointer;
-    margin-bottom: 30px; 
-    width: 300px; 
-    height: 75px; 
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-button:hover {
+#dark-mode-button:hover {
+    background-color: #a9a7a7;
+    color: var(--dark-mode-button-text);
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+    margin-top: 30px; 
+    align-items: center; 
+}
+
+.button {
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 20px 40px;
+    color: var(--button-text-color, #ffffff);
+    background-color: #545454;
+    border: 2px solid var(--text-color, #ffffff);
+    border-radius: 50px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 300px; 
+}
+
+.button:hover {
     color: #43423f;
     background-color: #ffffff;
+}
+
+#customize-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+#customize-inputs input {
+    width: 200px;
+    height: 30px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#customize-inputs .button {
+    font-size: 20px;
+    text-align: center;
+    width: 130px;
+    height: 20px;
+    margin-top: 50px;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
 }

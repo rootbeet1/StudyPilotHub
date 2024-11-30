@@ -34,11 +34,14 @@ body {
 }
 
 #dark-mode-button {
+    position: absolute; /* Positioniere den Button relativ zum Elternteil (body) */
+    top: 10px; /* Abstand vom oberen Rand */
+    left: 10px; /* Abstand vom linken Rand */
     padding: 10px 20px;
     font-size: 16px;
     font-family: 'Arial', sans-serif;
     font-weight: bold;
-    background-color: var(--dark-mode-button,#43423f);
+    background-color: var(--dark-mode-button, #434343);
     color: var(--dark-mode-button-text, white);
     border: 2px solid var(--text-color, #ffffff);
     border-radius: 50px;
